@@ -1,16 +1,20 @@
 import matplotlib.pyplot as plt
 from PIL import Image
+import numpy as np
 
-img = Image.open('../images/1.jpg').convert('L')
+img = Image.open('./images/1.jpg').convert('L')
 
+print(img)
 # This is just a filter. 
-kernel_x = [-1,0,1], [-2,0,2], [-1,0,1]])
-kernel_y = [-1,-2,-1],[0,0,0], [1,2,1]])
+kernel_x = ([[-1,0,1], [-2,0,2], [-1,0,1]])
+kernel_y = ([[-1,-2,-1],[0,0,0], [1,2,1]])
 
 
 def convolve(image, kernel):
-    i_h, i_w = image.shape
-    k_h, k_w = kernel.shape
+    i_w, i_h = image.size
+
+    k_w = len(kernel[0])
+    k_h = len(kernel)
 
     p_h = k_h // 2
     p_w = k_w // 2
@@ -40,28 +44,5 @@ img_x = absolute(convolve(img, kernel_x))
 img_y = absolute(convolve(img, kernel_y))
 edge = img_x + img_y
 
-plt.inshow(edge, cmap="gray")
+plt.imshow(edge, cmap="gray")
 plt.show()
-
-import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
-
-# Load the image and convert it to grayscale
-img = Image.open('image.png').convert('L')
-
-# Define the Sobel operator kernels
-kernel_x = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])
-kernel_y = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]])
-
-# Apply the Sobel operator to the image
-img_x = np.abs(np.convolve(img, kernel_x, mode='same'))
-img_y = np.abs(np.convolve(img, kernel_y, mode='same'))
-edge = img_x + img_y
-
-
-plt.imshow(edge, cmap='gray')
-plt.axis('off')
-plt.show()
-
-
