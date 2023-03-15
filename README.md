@@ -30,6 +30,12 @@ The exection Time of each technique has been illustratd in the following table. 
 
 
 ## Quality of images
+Original images are inside images directory. One of the example is shown in the below.
 
+![]()<img src="/images/1.jpg"  width="240">
 
+The results are shown in following pictures.
 
+![]()<img src="/out/1_RAW.png"  width="240">
+
+![]()<img src="/out/1_np.png"  width="240">
