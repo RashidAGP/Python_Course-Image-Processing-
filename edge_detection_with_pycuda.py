@@ -3,7 +3,7 @@ import pycuda.autoinit
 import pycuda.driver as cuda
 from pycuda.compiler import SourceModule
 
-img = np.load("../images/1.jpeg")
+img = np.load("./images/1.jpeg")
 
 sobel_kernel = """
 __global__ void sobel_filter(float *img, float *out, int width, int height) {
